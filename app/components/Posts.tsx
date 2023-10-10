@@ -1,16 +1,25 @@
 'use client'
 import Link from "next/link"
-import FormatDate from "@/app/lib/formattedDate"
+// import FormatDate from "@/app/lib/formattedDate"
 import { useGetPosts } from "@/src/querys"
+
+function FormatDate(dateString: string): string {
+    const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+}
 
 export default function Posts() {
 
     const { data, isLoading, isError } = useGetPosts()
 
-
-    // const handleDelete = (id: string) => {
-
-    //   };
+    // const handleDelete = (id: string) => {};
 
     if (isLoading) return <div>Loading tasks...</div>
     if (isError || !data) return <div>There was an error, try again</div>
