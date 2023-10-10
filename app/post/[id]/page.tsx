@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import FormatDate from '@/lib/formattedDate';
 import { usePathname } from 'next/navigation';
-import {useGetPostById } from '@/src/querys';
+import { useGetPostById } from '@/src/querys';
 
 const Page = () => {
     const pathname = usePathname()
@@ -12,15 +12,15 @@ const Page = () => {
 
     const { data, isLoading, isError } = useGetPostById({ id })
 
-    const date = FormatDate(data?.publishDate)
     if (isLoading) return <div>Loading tasks...</div>
     if (isError || !data) return <div>There was an error, try again</div>
 
 
     return (
+        data &&
         <div className="px-6 mx-auto py-9">
             <div className="max-w-md mx-auto bg-white rounded shadow-lg p-6 mb-4" key={data.id}>
-                <p className="text-gray-600 text-sm mb-2">{date}</p>
+                <p className="text-gray-600 text-sm mb-2">{FormatDate(data.publishDate)}</p>
                 <Image
                     src={data.image}
                     alt={data.id}
@@ -42,7 +42,7 @@ const Page = () => {
             <div>
 
             </div>
-            
+
         </div>
     );
 };

@@ -1,4 +1,4 @@
-function FormatDate(dateString: string): string |undefined {
+function FormatDate(dateString: string): string {
     const options: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'long',
