@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
+import FormatDate from '@/app/lib/formattedDate';
 import { usePathname } from 'next/navigation';
 import { useGetPostById } from '@/src/querys';
 
@@ -19,7 +20,7 @@ const Page = () => {
         data &&
         <div className="px-6 mx-auto py-9">
             <div className="max-w-md mx-auto bg-white rounded shadow-lg p-6 mb-4" key={data.id}>
-                <p className="text-gray-600 text-sm mb-2">(data.publishDate)</p>
+                <p className="text-gray-600 text-sm mb-2">{FormatDate(data.publishDate)}</p>
                 <Image
                     src={data.image}
                     alt={data.id}

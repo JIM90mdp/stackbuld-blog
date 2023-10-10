@@ -1,14 +1,16 @@
 'use client'
 import Link from "next/link"
+import FormatDate from "@/app/lib/formattedDate"
 import { useGetPosts } from "@/src/querys"
-
-
 
 export default function Posts() {
 
     const { data, isLoading, isError } = useGetPosts()
 
-    // const handleDelete = (id: string) => {};
+
+    // const handleDelete = (id: string) => {
+
+    //   };
 
     if (isLoading) return <div>Loading tasks...</div>
     if (isError || !data) return <div>There was an error, try again</div>
@@ -26,7 +28,7 @@ export default function Posts() {
                                 <h1 className="text-2xl font-semibold text-blue-600 hover:underline">
                                     {post.owner.firstName}, {post.owner.lastName}
                                 </h1>
-                                <span className="text-gray-500">{post.publishDate}</span>
+                                <span className="text-gray-500">{FormatDate(post.publishDate)}</span>
                                 <p className="text-gray-700">{post.text}</p>
                                 {/* <button className="prose prose-xl" onClick={handleDelete(post.id)}>Delete Post</button> */}
                             </div>
