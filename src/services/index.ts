@@ -1,5 +1,6 @@
 "use client";
 import { IdType, TypePosts, getPostAllQuery } from "../util/types";
+// const { DUMMYAPI} = process.env;
 
 // export function getPosts({ page = 1}: { page: PageType }) {
 export function getPosts() {
@@ -7,7 +8,7 @@ export function getPosts() {
   return fetch(`https://dummyapi.io/data/v1/post`, {
     // return fetch(`https://dummyapi.io/data/v1/user?page=${page}&limit=10`, {
     headers: {
-      "app-id": "6522d3514ba3c86cc33fce72",
+      "app-id": "65259d8be7ba55716e5b2d4d",
     },
   })
     .then(async (res) => {
@@ -28,7 +29,7 @@ export function getPostById({ id }: { id: IdType }) {
   console.log("Id from getPostsById: ", id);
   return fetch(`https://dummyapi.io/data/v1/post/${id}`, {
     headers: {
-      "app-id": "6522d3514ba3c86cc33fce72",
+      "app-id": "65259d8be7ba55716e5b2d4d",
     },
   })
     .then(async (res) => {
@@ -45,7 +46,7 @@ export function getPostById({ id }: { id: IdType }) {
 }
 
 export function createPost() {
-  const apiKey = "6522d3514ba3c86cc33fce72"; // Reemplaza con tu clave de API DummyAPI
+  const apiKey = "65259d8be7ba55716e5b2d4d"; 
   const apiUrl = "https://dummyapi.io/data/v1";
   const endpoint = "/post/create";
 
