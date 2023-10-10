@@ -1,6 +1,6 @@
 "use client";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createPost, getPostById, getPosts } from "../services";
+import {  useQuery } from "@tanstack/react-query";
+import {  getPostById, getPosts } from "../services";
 import { TypePosts, getPostAllQuery } from "../util/types";
 
 

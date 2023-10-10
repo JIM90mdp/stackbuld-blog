@@ -1,5 +1,4 @@
 'use client'
-import { useCreatePost } from '@/src/querys'
 import React, { useState } from 'react'
 import { createPost } from '@/src/services'
 
@@ -43,7 +42,7 @@ const Page = () => {
     //         [e.target.name]: e.target.value,
     //     })
     // }
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPostForm((postForm) => ({
             ...postForm,
             [e.target.name]: e.target.value,
