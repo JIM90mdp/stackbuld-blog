@@ -1,19 +1,8 @@
 'use client'
 import Link from "next/link"
-// import FormatDate from "@/app/lib/formattedDate"
 import { useGetPosts } from "@/src/querys"
 
-function FormatDate(dateString: string): string {
-    const options: Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-}
+
 
 export default function Posts() {
 
@@ -37,7 +26,7 @@ export default function Posts() {
                                 <h1 className="text-2xl font-semibold text-blue-600 hover:underline">
                                     {post.owner.firstName}, {post.owner.lastName}
                                 </h1>
-                                <span className="text-gray-500">{FormatDate(post.publishDate)}</span>
+                                <span className="text-gray-500">{post.publishDate}</span>
                                 <p className="text-gray-700">{post.text}</p>
                                 {/* <button className="prose prose-xl" onClick={handleDelete(post.id)}>Delete Post</button> */}
                             </div>
