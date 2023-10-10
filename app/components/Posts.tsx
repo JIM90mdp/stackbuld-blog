@@ -1,7 +1,12 @@
 'use client'
-import Link from "next/link"
-import FormatDate from "@/app/lib/formattedDate"
-import { useGetPosts } from "@/src/querys"
+import React from "react";
+import Link from "next/link";
+import { useGetPosts } from "../querys"
+import FormatDate from "../lib/formattedDate"
+// import FormatDate from "@/app/lib/formattedDate"
+// import { useGetPosts } from "@/src/querys"
+// import { useGetPosts } from "../querys/index"
+
 
 export default function Posts() {
 
@@ -40,3 +45,4 @@ export default function Posts() {
         </section>
     )
 }
+

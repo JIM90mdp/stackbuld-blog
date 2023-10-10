@@ -1,9 +1,11 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
-import FormatDate from '@/app/lib/formattedDate';
+// import FormatDate from '@/app/lib/formattedDate';
+import FormatDate from '../../lib/formattedDate';
 import { usePathname } from 'next/navigation';
-import { useGetPostById } from '@/src/querys';
+// import { useGetPostById } from '@/src/querys';
+import { useGetPostById } from '../../querys';
 
 const Page = () => {
     const pathname = usePathname()

@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import { createPost } from '@/src/services'
+// import { createPost } from '@/src/services'
+
 
 const Page = () => {
 
@@ -52,7 +53,7 @@ const Page = () => {
     // const createPost = useCreatePost();
 
     const handleSubmit = () => { 
-        createPost()
+        // createPost()
     };
 
     return (
