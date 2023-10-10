@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import FormatDate from "@/lib/formattedDate"
+import FormatDate from "@/app/lib/formattedDate"
 import { useGetPosts } from "@/src/querys"
 
 export default function Posts() {
