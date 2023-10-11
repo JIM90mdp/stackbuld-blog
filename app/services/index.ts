@@ -1,12 +1,8 @@
 "use client";
 import { IdType, TypePosts, getPostAllQuery, CreateType } from "../util/types";
-// const { DUMMYAPI} = process.env;
 
-// export function getPosts({ page = 1}: { page: PageType }) {
 export function getPosts() {
-  // console.log("Get Posts page", page && page)
   return fetch(`https://dummyapi.io/data/v1/post`, {
-    // return fetch(`https://dummyapi.io/data/v1/user?page=${page}&limit=10`, {
     headers: {
       "app-id": "6525ebd5ddbe4364ccf70393",
     },
@@ -45,8 +41,8 @@ export function getPostById({ id }: { id: IdType }) {
     });
 }
 
-export async function createPost( {values} : { values: CreateType }) {
-  console.log("values: ", values)
+export async function createPost({ values }: { values: CreateType }) {
+  console.log("values: ", values);
   const apiKey = "6525ebd5ddbe4364ccf70393";
   const apiUrl = "https://dummyapi.io/data/v1";
   const endpoint = "/post/create";
@@ -72,5 +68,33 @@ export async function createPost( {values} : { values: CreateType }) {
     })
     .catch((error) => {
       console.error("Error al crear el post:", error);
+    });
+}
+export async function deletePostById({ id }: { id: string }) {
+  console.log("values: ", id);
+  const apiKey = "6525ebd5ddbe4364ccf70393";
+  const apiUrl = "https://dummyapi.io/data/v1";
+  const endpoint = `/user/${id}`;
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "app-id": apiKey,
+    },
+  };
+  return fetch(apiUrl + endpoint, requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al eliminar el post");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Post eliminado exitosamente:", data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error al eliminar el post:", error);
     });
 }

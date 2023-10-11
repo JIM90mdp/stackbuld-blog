@@ -1,17 +1,10 @@
 'use client'
 import React, { useState } from 'react'
-import { createPost } from '../services';
 import { useCreatePost } from '../querys';
 import FormatDate from '../lib/formattedDate';
 import Image from 'next/image';
-import { CreateType } from "../util/types";
-
-
 
 const Page = () => {
-
-    const [postState, setPostState] = useState(undefined);
-    const [errorState, setErrorState] = useState({ error: false, });
 
     const [hiddenState, setHiddenState] = useState(true);
     const hiddenClass = hiddenState ? "hidden" : "";
@@ -54,10 +47,6 @@ const Page = () => {
         createPost.mutate({values})
         handleClearPost()
     };
-
-
-
-    console.log("createPost.data: ", createPost)
 
     return (
         <div>

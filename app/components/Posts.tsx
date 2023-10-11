@@ -3,23 +3,17 @@ import React from "react";
 import Link from "next/link";
 import { useGetPosts } from "../querys"
 import FormatDate from "../lib/formattedDate"
-// import FormatDate from "@/app/lib/formattedDate"
-// import { useGetPosts } from "@/src/querys"
-// import { useGetPosts } from "../querys/index"
-
+import { deletePostById } from "../services";
 
 export default function Posts() {
 
     const { data, isLoading, isError } = useGetPosts()
 
-
-    // const handleDelete = (id: string) => {
-
-    //   };
-
-    if (isLoading) return <div>Loading tasks...</div>
-    if (isError || !data) return <div>There was an error, try again</div>
-
+    const handleDelete = (id: string) => {
+        deletePostById({ id })
+    }
+    if (isLoading) return <div className="prose prose-xl mt-6 mx-auto max-w-2xl">Loading tasks...</div>
+    if (isError || !data) return <div className="prose prose-xl mt-6 mx-auto max-w-2xl">There was an error, try again</div>
 
 
     return (
@@ -35,7 +29,7 @@ export default function Posts() {
                                 </h1>
                                 <span className="text-gray-500">{FormatDate(post.publishDate)}</span>
                                 <p className="text-gray-700">{post.text}</p>
-                                {/* <button className="prose prose-xl" onClick={handleDelete(post.id)}>Delete Post</button> */}
+                                <button className="prose prose-xl text-center border-2 p-1 hover:bg-slate-400" onClick={() => handleDelete(post.owner.id)}>Delete User</button>
                             </div>
                         </Link>
                     ))}

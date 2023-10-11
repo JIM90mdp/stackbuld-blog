@@ -1,11 +1,10 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
-// import FormatDate from '@/app/lib/formattedDate';
 import FormatDate from '../../lib/formattedDate';
 import { usePathname } from 'next/navigation';
-// import { useGetPostById } from '@/src/querys';
 import { useGetPostById } from '../../querys';
+import { deletePostById } from '@/app/services';
 
 const Page = () => {
     const pathname = usePathname()
@@ -16,7 +15,6 @@ const Page = () => {
 
     if (isLoading) return <div>Loading tasks...</div>
     if (isError || !data) return <div>There was an error, try again</div>
-
 
     return (
         data &&
@@ -41,10 +39,6 @@ const Page = () => {
                 </ul>
                 <p className="text-gray-700 mt-4">{data.text}</p>
             </div>
-            <div>
-
-            </div>
-
         </div>
     );
 };
