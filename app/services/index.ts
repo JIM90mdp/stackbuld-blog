@@ -8,7 +8,7 @@ export function getPosts() {
   return fetch(`https://dummyapi.io/data/v1/post`, {
     // return fetch(`https://dummyapi.io/data/v1/user?page=${page}&limit=10`, {
     headers: {
-      "app-id": "65259d8be7ba55716e5b2d4d",
+      "app-id": "6525ebd5ddbe4364ccf70393",
     },
   })
     .then(async (res) => {
@@ -29,7 +29,7 @@ export function getPostById({ id }: { id: IdType }) {
   console.log("Id from getPostsById: ", id);
   return fetch(`https://dummyapi.io/data/v1/post/${id}`, {
     headers: {
-      "app-id": "65259d8be7ba55716e5b2d4d",
+      "app-id": "6525ebd5ddbe4364ccf70393",
     },
   })
     .then(async (res) => {
@@ -47,7 +47,7 @@ export function getPostById({ id }: { id: IdType }) {
 
 export async function createPost( {values} : { values: CreateType }) {
   console.log("values: ", values)
-  const apiKey = "65259d8be7ba55716e5b2d4d";
+  const apiKey = "6525ebd5ddbe4364ccf70393";
   const apiUrl = "https://dummyapi.io/data/v1";
   const endpoint = "/post/create";
 
