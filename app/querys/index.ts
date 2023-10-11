@@ -1,8 +1,7 @@
 "use client";
-import {  useQuery } from "@tanstack/react-query";
-import {  getPostById, getPosts } from "../services";
-import { TypePosts, getPostAllQuery } from "../util/types";
-
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { createPost, getPostById, getPosts } from "../services";
+import { CreateType, TypePosts, getPostAllQuery } from "../util/types";
 
 export const postsKeys = {
   key: ["posts"],
@@ -10,7 +9,6 @@ export const postsKeys = {
   findAll: (query: string = "") => [...postsKeys.key, "find-all", query],
   createOne: (id: string = "") => [...postsKeys.key, "find-one", id],
 };
-
 
 type getPostAll = {
   data: getPostAllQuery | undefined;
@@ -25,7 +23,6 @@ export function useGetPosts(): getPostAll {
   return { data, isLoading, isError };
 }
 
-
 type getPostByIdType = {
   data: TypePosts | undefined;
   isLoading: boolean;
@@ -39,15 +36,12 @@ export function useGetPostById({ id }: { id: string }): getPostByIdType {
   return { data, isLoading, isError };
 }
 
-
 // export function useRemovePostById({id}: {id: string}){
 
 // }
 
-// const { data, isLoading, isError} = useQuery({
-//   queryKey: postsKeys.createOne(),
-//   queryFn: createPost,
-// });
-// console.log("data from useCreatePost: ", data);
-// return { data, isLoading, isError }
-// }
+export function useCreatePost() {
+  return useMutation({
+    mutationFn: createPost,
+  });
+}

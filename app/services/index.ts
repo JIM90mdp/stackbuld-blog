@@ -1,5 +1,5 @@
 "use client";
-import { IdType, TypePosts, getPostAllQuery } from "../util/types";
+import { IdType, TypePosts, getPostAllQuery, CreateType } from "../util/types";
 // const { DUMMYAPI} = process.env;
 
 // export function getPosts({ page = 1}: { page: PageType }) {
@@ -45,19 +45,11 @@ export function getPostById({ id }: { id: IdType }) {
     });
 }
 
-export function createPost() {
-  const apiKey = "65259d8be7ba55716e5b2d4d"; 
+export async function createPost( {values} : { values: CreateType }) {
+  console.log("values: ", values)
+  const apiKey = "65259d8be7ba55716e5b2d4d";
   const apiUrl = "https://dummyapi.io/data/v1";
   const endpoint = "/post/create";
-
-  const postData = {
-    image: "https://img.dummyapi.io/photo-1500879747858-bb1845b61beb.jpg",
-    likes: 242,
-    tags: ["dog", "animal", "golden retriever"],
-    text: "Dog in a forest at sunset dog in forest with sun r...",
-    publishDate: "2020-05-22T22:27:12.912Z",
-    owner: "60d0fe4f5311236168a109d4",
-  };
 
   const requestOptions = {
     method: "POST",
@@ -65,10 +57,9 @@ export function createPost() {
       "Content-Type": "application/json",
       "app-id": apiKey,
     },
-    body: JSON.stringify(postData),
+    body: JSON.stringify(values),
   };
-
-  fetch(apiUrl + endpoint, requestOptions)
+  return fetch(apiUrl + endpoint, requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Error al crear el post");
@@ -77,7 +68,7 @@ export function createPost() {
     })
     .then((data) => {
       console.log("Post creado exitosamente:", data);
-      return data;
+      return data as TypePosts;
     })
     .catch((error) => {
       console.error("Error al crear el post:", error);
